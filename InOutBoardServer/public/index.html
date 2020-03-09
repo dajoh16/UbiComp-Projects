@@ -6,11 +6,17 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-<script src="../node_modules/socket.io-client/dist/socket.io.js"></script>
 <script src="javascripts/frontend.js"></script>
 
 <body>
-
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://localhost:3000');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>
 <div class="card border-primary mb-3" style="width: 15rem;">
   <div class="card-body">
     <h5 class="card-title">#Name</h5>

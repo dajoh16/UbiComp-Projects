@@ -6,4 +6,3 @@ function checkedInElementCreator(name,timestamp){
 
 }
 
-var socket = io();
