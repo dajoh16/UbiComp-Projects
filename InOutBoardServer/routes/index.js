@@ -1,11 +1,18 @@
 var express = require('express');
 var router = express.Router();
 var db = require('..\\database');
+var io = require('..\\ws');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express'});
 });
+
+io.on('connection', function(socket){
+    console.log('a user connected');
+});
+
+
 
 router.get('/api/status', function (req, res, next) {
     db.many(`SELECT DISTINCT ON (userid) userid, status, dt, tuser.name FROM tevent INNER JOIN tuser AS tuser ON tevent.userid = tuser.id ORDER BY userid, dt DESC`)
