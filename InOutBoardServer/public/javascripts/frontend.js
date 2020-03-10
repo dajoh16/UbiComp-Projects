@@ -6,3 +6,7 @@ function checkedInElementCreator(name,timestamp){
 
 }
 
+function connect() {
+
+}
+
