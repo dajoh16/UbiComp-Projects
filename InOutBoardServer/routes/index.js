@@ -10,7 +10,7 @@ function setup(io) {
 
 
     router.get('/ws', function (req, res, next) {
-        io.emit("update", {data: "this is an update from the server"});
+        update(io);
         res.status(200).send();
     });
 
@@ -37,6 +37,7 @@ function setup(io) {
         insertEvent(req, status.IN)
             .then(data => {
                 res.status(200).json(data);
+                update(io);
             })
             .catch((err) => {
                 console.log(err);
@@ -48,6 +49,7 @@ function setup(io) {
         insertEvent(req, status.OUT)
             .then(data => {
                 res.status(200).json(data);
+                update(io);
             })
             .catch((err) => {
                 console.log(err);
@@ -57,6 +59,16 @@ function setup(io) {
 
     return router;
 
+}
+
+function update(io){
+    getStatus().then(data => {
+        io.emit("update", data );
+    });
+}
+
+function getStatus(){
+   return db.many(`SELECT DISTINCT ON (userid) userid, status, dt, tuser.name FROM tevent INNER JOIN tuser AS tuser ON tevent.userid = tuser.id ORDER BY userid, dt DESC`)
 }
 
 function insertEvent(req, status) {
