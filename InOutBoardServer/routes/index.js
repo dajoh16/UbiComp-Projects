@@ -57,9 +57,20 @@ function setup(io) {
             });
     });
 
+    router.post('/api/reset', function (req, res, next){
+       db.none('DELETE * FROM tuser WHERE 1 = 1')
+           .then(data => {
+               db.none('DELETE * FROM tevent WHERE 1 = 1')
+                   .then(data => {
+                       res.status(200).send()
+                   })
+           })
+    });
+
     return router;
 
 }
+
 
 function update(io){
     getStatus().then(data => {
