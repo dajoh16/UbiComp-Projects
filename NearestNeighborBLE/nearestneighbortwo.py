@@ -50,21 +50,23 @@ def NearestNeighbor(trainingdata, testdata):
 
 
 trainingdata = []
-for filename in glob.glob("experiment1\\train\\*data_wide.csv"):
+for filename in glob.glob("experiment2\\train\\*data_wide.csv"):
     with open(filename,newline='\n') as csvfile:
+        
         trainreader = csv.DictReader(csvfile, delimiter=',')
         for row in trainreader:
-            traindata = TrainData(row['realx'],row['realy'],row['edge_1'],row['edge_2'],row['edge_3'],row['edge_8'],row['edge_9'],row['edge_10'],row['edge_11'],row['edge_12'],row['edge_13'])
+            traindata = TrainData(row['realx'],row['realy'],row['edge_50'],row['edge_51'],row['edge_52'],row['edge_53'],row['edge_54'],row['edge_55'],row['edge_56'],row['edge_57'],row['edge_58'])
             trainingdata.append(traindata)
 
 allDist = []
 testingdata = []
 
-for filename in glob.glob("experiment1\\test\\*data_wide.csv"):
+for filename in glob.glob("experiment2\\test\\*data_wide.csv"):
     with open(filename,newline='\n') as csvfile:
         testreader = csv.DictReader(csvfile, delimiter=',')
+        
         for row in testreader:
-            testdata = TestData(row['realx'],row['realy'],row['edge_1'],row['edge_2'],row['edge_3'],row['edge_8'],row['edge_9'],row['edge_10'],row['edge_11'],row['edge_12'],row['edge_13'])
+            testdata = TestData(row['realx'],row['realy'],row['edge_50'],row['edge_51'],row['edge_52'],row['edge_53'],row['edge_54'],row['edge_55'],row['edge_56'],row['edge_57'],row['edge_58'])
             testingdata.append(testdata)
     actualFilename = os.path.basename(filename)
     output = open("output-"+actualFilename+".dat","w+")

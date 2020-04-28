@@ -15,7 +15,7 @@ function checkedOutElementCreator(name,timestamp){
         '      <span class="badge badge-danger" style="float: left; margin-top: 5px">Checked-Out</span>\n' +
         '    </div>\n' +
         '  </div>\n' +
-        '  <p style="font-family: \'Comic Sans MS\';font-size: 10px;text-align: center">Made by: JFD©®™</p>\n' +
+        '  <p style="font-family: \'Comic Sans MS\';font-size: 10px;text-align: center">Made by: JFD</p>\n' +
         '</div>\n'
     amountOfCards += 1;
 }
@@ -35,7 +35,7 @@ function checkedInElementCreator(name,timestamp){
         '      <span class="badge badge-primary" style="float: left; margin-top: 5px">Checked-In</span>\n' +
         '    </div>\n' +
         '  </div>\n' +
-        '  <p style="font-family: \'Comic Sans MS\';font-size: 10px;text-align: center">Made by: JFD©®™</p>\n' +
+        '  <p style="font-family: \'Comic Sans MS\';font-size: 10px;text-align: center">Made by: JFD</p>\n' +
         '</div>\n'
     amountOfCards += 1;
 }
